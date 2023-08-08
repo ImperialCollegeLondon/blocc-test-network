@@ -1,0 +1,186 @@
+Organizations:
+- &ContainerOrdererOrg5
+
+  Name: ContainerOrderer5MSP
+  ID: ContainerOrderer5MSP
+  MSPDir: ../organizations/ordererOrganizations/container5.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('ContainerOrderer5MSP.member')"
+    Writers:
+      Type: Signature
+      Rule: "OR('ContainerOrderer5MSP.member')"
+    Admins:
+      Type: Signature
+      Rule: "OR('ContainerOrderer5MSP.admin')"
+  OrdererEndpoints:
+  - blocc-container5-orderer:7050
+
+- &ContainerOrdererOrg6
+
+  Name: ContainerOrderer6MSP
+  ID: ContainerOrderer6MSP
+  MSPDir: ../organizations/ordererOrganizations/container6.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('ContainerOrderer6MSP.member')"
+    Writers:
+      Type: Signature
+      Rule: "OR('ContainerOrderer6MSP.member')"
+    Admins:
+      Type: Signature
+      Rule: "OR('ContainerOrderer6MSP.admin')"
+  OrdererEndpoints:
+  - blocc-container6-orderer:7050
+
+- &ContainerOrg5
+  Name: Container5MSP
+  ID: Container5MSP
+  MSPDir: ../organizations/peerOrganizations/container5.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('Container5MSP.admin', 'Container5MSP.peer', 'Container5MSP.client')"
+    Writers:
+      Type: Signature
+      Rule: "OR('Container5MSP.admin', 'Container5MSP.client')"
+    Admins:
+      Type: Signature
+      # Adding peer to Admins since each peerOrg is a shipping container
+      Rule: "OR('Container5MSP.admin', 'Container5MSP.peer')"
+    Endorsement:
+      Type: Signature
+      Rule: "OR('Container5MSP.peer')"
+  
+- &ContainerOrg6
+  Name: Container6MSP
+  ID: Container6MSP
+  MSPDir: ../organizations/peerOrganizations/container6.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('Container6MSP.admin', 'Container6MSP.peer', 'Container6MSP.client')"
+    Writers:
+      Type: Signature
+      Rule: "OR('Container6MSP.admin', 'Container6MSP.client')"
+    Admins:
+      Type: Signature
+      Rule: "OR('Container6MSP.admin', 'Container6MSP.peer')"
+    Endorsement:
+      Type: Signature
+      Rule: "OR('Container6MSP.peer')"
+
+Capabilities:
+  Channel: &ChannelCapabilities
+    V2_0: true
+
+  Orderer: &OrdererCapabilities
+    V2_0: true
+
+  Application: &ApplicationCapabilities
+    V2_5: true
+
+Application: &ApplicationDefaults
+
+  Organizations:
+
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    LifecycleEndorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+    Endorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+
+  Capabilities:
+    <<: *ApplicationCapabilities
+
+Orderer: &ContainerOrderer5
+
+  OrdererType: etcdraft
+
+  EtcdRaft:
+    Consenters:
+    - Host: blocc-container5
+      Port: 7050
+      # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
+      ClientTLSCert: ../organizations/ordererOrganizations/container5.blocc.doc.ic.ac.uk/orderers/orderer.container5.blocc.doc.ic.ac.uk/tls/server.crt
+      ServerTLSCert: ../organizations/ordererOrganizations/container5.blocc.doc.ic.ac.uk/orderers/orderer.container5.blocc.doc.ic.ac.uk/tls/server.crt
+
+  BatchTimeout: 2s
+
+  BatchSize:
+    MaxMessageCount: 1
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    # BlockValidation specifies what signatures must be included in the block
+    # from the orderer for the peer to validate it.
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    SensorySigners:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+
+
+Channel: &Channel5
+  Policies:
+    # Who may invoke the 'Deliver' API
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    # Who may invoke the 'Broadcast' API
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    # By default, who may modify elements at this config level
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    ChannelLeader:
+      Type: Signature
+      Rule: "OR('Container5MSP.member')"
+    SensorySigners:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+
+  Capabilities:
+    <<: *ChannelCapabilities
+
+Profiles:
+
+  Channel5Genesis:
+    <<: *Channel5
+    Orderer:
+      <<: *ContainerOrderer5
+      Organizations:
+      - *ContainerOrdererOrg5
+      Capabilities: *OrdererCapabilities
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+      - *ContainerOrg5
+      - *ContainerOrg6
+      Capabilities: *ApplicationCapabilities

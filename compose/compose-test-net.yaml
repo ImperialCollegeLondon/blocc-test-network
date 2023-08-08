@@ -1,0 +1,176 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+version: "3.7"
+
+volumes:
+  orderer5:
+  orderer6:
+  peer5:
+  peer6:
+
+networks:
+  test:
+    name: blocc_test
+
+services:
+  orderer5:
+    container_name: blocc-container5-orderer
+    image: ghcr.io/imperialcollegelondon/fabric-orderer:bloccprotocol-release
+    labels:
+      service: blocc-fabric
+    environment:
+      - FABRIC_CFG_PATH=/var/hyperledger/config
+      - FABRIC_LOGGING_SPEC=DEBUG
+      - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+      # enabled TLS
+      - ORDERER_GENERAL_TLS_ENABLED=true
+      - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+      - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+      - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      - ORDERER_CHANNELPARTICIPATION_ENABLED=true
+      - ORDERER_ADMIN_TLS_ENABLED=true
+      - ORDERER_ADMIN_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+      - ORDERER_ADMIN_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+      - ORDERER_ADMIN_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      - ORDERER_ADMIN_TLS_CLIENTROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+    working_dir: /root
+    command: orderer
+    volumes:
+      - ~/blocc/blocc-pi-setup/fabric/config:/var/hyperledger/config
+      - ../organizations/ordererOrganizations/container5.blocc.doc.ic.ac.uk/orderers/orderer.container5.blocc.doc.ic.ac.uk/msp:/var/hyperledger/orderer/msp
+      - ../organizations/ordererOrganizations/container5.blocc.doc.ic.ac.uk/orderers/orderer.container5.blocc.doc.ic.ac.uk/tls:/var/hyperledger/orderer/tls
+      - ../production/orderer.container5.blocc.doc.ic.ac.uk:/var/hyperledger/production/orderer
+    ports:
+      - 5050:7050 # Orderer general listen port
+      - 5053:7053 # Orderer admin listen port
+      - 5443:9443 # Orderer operations listen port
+    networks:
+      - test
+
+  orderer6:
+    container_name: blocc-container6-orderer
+    image: ghcr.io/imperialcollegelondon/fabric-orderer:bloccprotocol-release
+    labels:
+      service: blocc-fabric
+    environment:
+      - FABRIC_CFG_PATH=/var/hyperledger/config
+      - FABRIC_LOGGING_SPEC=DEBUG
+      - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+      # enabled TLS
+      - ORDERER_GENERAL_TLS_ENABLED=true
+      - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+      - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+      - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      - ORDERER_CHANNELPARTICIPATION_ENABLED=true
+      - ORDERER_ADMIN_TLS_ENABLED=true
+      - ORDERER_ADMIN_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+      - ORDERER_ADMIN_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+      - ORDERER_ADMIN_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      - ORDERER_ADMIN_TLS_CLIENTROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+    working_dir: /root
+    command: orderer
+    volumes:
+      - ~/blocc/blocc-pi-setup/fabric/config:/var/hyperledger/config
+      - ../organizations/ordererOrganizations/container6.blocc.doc.ic.ac.uk/orderers/orderer.container6.blocc.doc.ic.ac.uk/msp:/var/hyperledger/orderer/msp
+      - ../organizations/ordererOrganizations/container6.blocc.doc.ic.ac.uk/orderers/orderer.container6.blocc.doc.ic.ac.uk/tls:/var/hyperledger/orderer/tls
+      - ../production/orderer.container6.blocc.doc.ic.ac.uk:/var/hyperledger/production/orderer
+    ports:
+      - 6050:7050 # Orderer general listen port
+      - 6053:7053 # Orderer admin listen port
+      - 6443:9443 # Orderer operations listen port
+    networks:
+      - test
+
+  peer5:
+    container_name: blocc-container5
+    image: ghcr.io/imperialcollegelondon/fabric-peer:bloccprotocol-release
+    labels:
+      service: blocc-fabric
+    environment:
+      - FABRIC_CFG_PATH=/etc/hyperledger/peercfg
+      - FABRIC_LOGGING_SPEC=DEBUG
+      # NOTE: for BLOCC protocol
+      - CORE_PEER_ADDRESS=blocc-container5:7051
+      - CORE_PEER_LOCALMSPID=Container5MSP
+      # NOTE: server and client share the same cert and key
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      - CORE_PEER_PROFILE_ENABLED=false
+      # Peer specific variables
+      - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/msp
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+    volumes:
+      - ~/blocc/blocc-pi-setup/fabric/config:/etc/hyperledger/peercfg
+      - ../organizations/peerOrganizations/container5.blocc.doc.ic.ac.uk/peers/peer0.container5.blocc.doc.ic.ac.uk:/etc/hyperledger/fabric
+      - ../production/peer0.container5.blocc.doc.ic.ac.uk:/var/hyperledger/production
+      - /var/run:/host/var/run
+    working_dir: /root
+    command: peer node start
+    ports:
+      - 5051:7051 # Peer listen port
+      - 5052:7052 # Peer chaincode listen port
+      - 5444:9444 # Peer operation listen port
+    networks:
+      - test
+
+  peer6:
+    container_name: blocc-container6
+    image: ghcr.io/imperialcollegelondon/fabric-peer:bloccprotocol-release
+    labels:
+      service: blocc-fabric
+    environment:
+      - FABRIC_CFG_PATH=/etc/hyperledger/peercfg
+      - FABRIC_LOGGING_SPEC=DEBUG
+      # NOTE: for BLOCC protocol
+      - CORE_PEER_ADDRESS=blocc-container6:7051
+      - CORE_PEER_LOCALMSPID=Container6MSP
+      # NOTE: server and client share the same cert and key
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      - CORE_PEER_PROFILE_ENABLED=false
+      # Peer specific variables
+      - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/msp
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+    volumes:
+      - ~/blocc/blocc-pi-setup/fabric/config:/etc/hyperledger/peercfg
+      - ../organizations/peerOrganizations/container6.blocc.doc.ic.ac.uk/peers/peer0.container6.blocc.doc.ic.ac.uk:/etc/hyperledger/fabric
+      - ../production/peer0.container6.blocc.doc.ic.ac.uk:/var/hyperledger/production
+      - /var/run:/host/var/run
+    working_dir: /root
+    command: peer node start
+    ports:
+      - 6051:7051 # Peer listen port
+      - 6052:7052 # Peer chaincode listen port
+      - 6444:9444 # Peer operation listen port
+    networks:
+      - test
+
+  cli:
+    container_name: cli
+    image: ghcr.io/imperialcollegelondon/fabric-tools:bloccprotocol-release
+    labels:
+      service: blocc-fabric
+    tty: true
+    stdin_open: true
+    environment:
+      - GOPATH=/opt/gopath
+      # - FABRIC_LOGGING_SPEC=INFO
+      - FABRIC_CFG_PATH=/etc/hyperledger/peercfg
+      - FABRIC_LOGGING_SPEC=DEBUG
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: /bin/bash
+    volumes:
+      - ../organizations:/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations
+      - ../scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/
+    depends_on:
+      - orderer5
+      - orderer6
+      - peer5
+      - peer6
+    networks:
+      - test
