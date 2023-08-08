@@ -112,7 +112,7 @@ Orderer: &ContainerOrderer5
 
   EtcdRaft:
     Consenters:
-    - Host: blocc-container5
+    - Host: blocc-container5-orderer
       Port: 7050
       # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
       ClientTLSCert: ../organizations/ordererOrganizations/container5.blocc.doc.ic.ac.uk/orderers/orderer.container5.blocc.doc.ic.ac.uk/tls/server.crt

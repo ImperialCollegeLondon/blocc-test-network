@@ -23,8 +23,10 @@ services:
       service: blocc-fabric
     environment:
       - FABRIC_CFG_PATH=/var/hyperledger/config
+      - FABRIC_CONTAINER_NUM=5
       - FABRIC_LOGGING_SPEC=DEBUG
       - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+      - ORDERER_GENERAL_LOCALMSPID=ContainerOrderer5MSP
       # enabled TLS
       - ORDERER_GENERAL_TLS_ENABLED=true
       - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
@@ -57,8 +59,10 @@ services:
       service: blocc-fabric
     environment:
       - FABRIC_CFG_PATH=/var/hyperledger/config
+      - FABRIC_CONTAINER_NUM=6
       - FABRIC_LOGGING_SPEC=DEBUG
       - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+      - ORDERER_GENERAL_LOCALMSPID=ContainerOrderer6MSP
       # enabled TLS
       - ORDERER_GENERAL_TLS_ENABLED=true
       - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
@@ -91,10 +95,13 @@ services:
       service: blocc-fabric
     environment:
       - FABRIC_CFG_PATH=/etc/hyperledger/peercfg
+      - FABRIC_CONTAINER_NUM=5
       - FABRIC_LOGGING_SPEC=DEBUG
       # NOTE: for BLOCC protocol
       - CORE_PEER_ADDRESS=blocc-container5:7051
       - CORE_PEER_LOCALMSPID=Container5MSP
+      - CORE_PEER_ID=peer0.container5.blocc.doc.ic.ac.uk
+      - CORE_PEER_EXTERNALENDPOINT=blocc-container5:7051
       # NOTE: server and client share the same cert and key
       - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
       - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
@@ -102,6 +109,7 @@ services:
       - CORE_PEER_PROFILE_ENABLED=false
       # Peer specific variables
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/msp
+      - CORE_PEER_FILESYSTEMPATH=/var/hyperledger/production
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
     volumes:
       - ~/blocc/blocc-pi-setup/fabric/config:/etc/hyperledger/peercfg
@@ -124,10 +132,13 @@ services:
       service: blocc-fabric
     environment:
       - FABRIC_CFG_PATH=/etc/hyperledger/peercfg
+      - FABRIC_CONTAINER_NUM=6
       - FABRIC_LOGGING_SPEC=DEBUG
       # NOTE: for BLOCC protocol
       - CORE_PEER_ADDRESS=blocc-container6:7051
       - CORE_PEER_LOCALMSPID=Container6MSP
+      - CORE_PEER_ID=peer0.container6.blocc.doc.ic.ac.uk
+      - CORE_PEER_EXTERNALENDPOINT=blocc-container6:7051
       # NOTE: server and client share the same cert and key
       - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
       - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
@@ -135,6 +146,7 @@ services:
       - CORE_PEER_PROFILE_ENABLED=false
       # Peer specific variables
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/msp
+      - CORE_PEER_FILESYSTEMPATH=/var/hyperledger/production
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
     volumes:
       - ~/blocc/blocc-pi-setup/fabric/config:/etc/hyperledger/peercfg
@@ -165,6 +177,7 @@ services:
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: /bin/bash
     volumes:
+      - ../../blocc-pi-setup/fabric/config:/etc/hyperledger/peercfg
       - ../organizations:/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations
       - ../scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/
     depends_on:
