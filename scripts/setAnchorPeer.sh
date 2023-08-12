@@ -18,7 +18,7 @@ createAnchorPeerUpdate() {
   infoln "Generating anchor peer update transaction for Org${ORG} on channel $CHANNEL_NAME"
 
   HOST=blocc-container${ORG}
-  PORT=${ORG}051
+  PORT=7051
 
   set -x
   # Modify the configuration to append the anchor peer 
