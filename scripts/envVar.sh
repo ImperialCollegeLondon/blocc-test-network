@@ -58,8 +58,8 @@ parsePeerConnectionParameters() {
   PEER_CONN_PARMS=()
   PEERS=""
   while [ "$#" -gt 0 ]; do
-    setGlobals $1
-    PEER="peer0.org$1"
+    setGlobals "$1"
+    PEER="peer0.container$1"
     ## Set peer addresses
     if [ -z "$PEERS" ]
     then
@@ -69,8 +69,8 @@ parsePeerConnectionParameters() {
     fi
     PEER_CONN_PARMS=("${PEER_CONN_PARMS[@]}" --peerAddresses "$CORE_PEER_ADDRESS")
     ## Set path to TLS certificate
-    CA=PEER0_ORG$1_CA
-    TLSINFO=(--tlsRootCertFiles "${!CA}")
+    CA=${PWD}/organizations/peerOrganizations/container$1.blocc.doc.ic.ac.uk/tlsca/tlsca.container$1.blocc.doc.ic.ac.uk-cert.pem
+    TLSINFO=(--tlsRootCertFiles ${CA})
     PEER_CONN_PARMS=("${PEER_CONN_PARMS[@]}" "${TLSINFO[@]}")
     # shift by one to get to the next organization
     shift
