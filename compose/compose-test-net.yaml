@@ -101,7 +101,7 @@ services:
       - CORE_PEER_ADDRESS=blocc-container5:7051
       - CORE_PEER_LOCALMSPID=Container5MSP
       - CORE_PEER_ID=peer0.container5.blocc.doc.ic.ac.uk
-      - CORE_PEER_EXTERNALENDPOINT=blocc-container5:7051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=blocc-container5:7051
       # NOTE: server and client share the same cert and key
       - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
       - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
@@ -139,7 +139,7 @@ services:
       - CORE_PEER_ADDRESS=blocc-container6:7051
       - CORE_PEER_LOCALMSPID=Container6MSP
       - CORE_PEER_ID=peer0.container6.blocc.doc.ic.ac.uk
-      - CORE_PEER_EXTERNALENDPOINT=blocc-container6:7051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=blocc-container6:7051
       # NOTE: server and client share the same cert and key
       - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
       - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
