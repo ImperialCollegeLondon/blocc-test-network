@@ -1,0 +1,48 @@
+{
+	"name": "container5-network",
+	"version": "1.0.0",
+	"client": {
+		"tlsEnable": true,
+        "adminCredential": {
+			"id": "exploreradmin",
+			"password": "exploreradminpw"
+		},
+		"enableAuthentication": false,
+		"organization": "Container5MSP",
+		"connection": {
+			"timeout": {
+				"peer": {
+					"endorser": "300"
+				},
+				"orderer": "300"
+			}
+		}
+	},
+	"channels": {
+		"channel5": {
+			"peers": {
+				"peer0.container5.blocc.doc.ic.ac.uk": {}
+			}
+		}
+	},
+	"organizations": {
+		"Container5MSP": {
+			"mspid": "Container5MSP",
+			"adminPrivateKey": {
+				"path": "/tmp/crypto/peerOrganizations/container5.blocc.doc.ic.ac.uk/users/Admin@container5.blocc.doc.ic.ac.uk/msp/keystore/priv_sk"
+			},
+			"peers": ["peer0.container5.blocc.doc.ic.ac.uk"],
+			"signedCert": {
+				"path": "/tmp/crypto/peerOrganizations/container5.blocc.doc.ic.ac.uk/users/Admin@container5.blocc.doc.ic.ac.uk/msp/signcerts/Admin@container5.blocc.doc.ic.ac.uk-cert.pem"
+			}
+		}
+	},
+	"peers": {
+		"peer0.container5.blocc.doc.ic.ac.uk": {
+			"tlsCACerts": {
+				"path": "/tmp/crypto/peerOrganizations/container5.blocc.doc.ic.ac.uk/peers/peer0.container5.blocc.doc.ic.ac.uk/tls/ca.crt"
+			},
+			"url": "grpcs://blocc-container5:7051"
+		}
+	}
+}

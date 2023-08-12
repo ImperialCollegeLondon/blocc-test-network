@@ -1,0 +1,13 @@
+{
+	"network-configs": {
+		"org1-network": {
+			"name": "Container5 Network",
+			"profile": "./connection-profile/container5-network.json"
+		},
+		"org2-network": {
+			"name": "Container6 Network",
+			"profile": "./connection-profile/container6-network.json"
+		}
+	},
+	"license": "Apache-2.0"
+}
