@@ -265,8 +265,6 @@ CHANNEL_LEADER_NUM="5"
 CC_NAME="NA"
 # chaincode path defaults to "NA"
 CC_SRC_PATH="NA"
-# endorsement policy defaults to "NA". This would allow chaincodes to use the majority default policy.
-CC_END_POLICY="NA"
 # collection configuration defaults to "NA"
 CC_COLL_CONFIG="NA"
 # chaincode init function defaults to "NA"
