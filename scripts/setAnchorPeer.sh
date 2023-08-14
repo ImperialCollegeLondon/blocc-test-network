@@ -13,7 +13,7 @@
 # NOTE: this must be run in a CLI container since it requires jq and configtxlator 
 createAnchorPeerUpdate() {
   infoln "Fetching channel config for channel $CHANNEL_NAME"
-  fetchChannelConfig $ORG $CHANNEL_NAME ${CORE_PEER_LOCALMSPID}config.json
+  fetchChannelConfig $ORG $CHANNEL_NAME ${CORE_PEER_LOCALMSPID}config.json $CHANNEL_LEADER_NUM
 
   infoln "Generating anchor peer update transaction for Org${ORG} on channel $CHANNEL_NAME"
 
@@ -32,7 +32,7 @@ createAnchorPeerUpdate() {
 }
 
 updateAnchorPeer() {
-  peer channel update -o blocc-container5-orderer:7050 --ordererTLSHostnameOverride blocc-container5 -c $CHANNEL_NAME -f ${CORE_PEER_LOCALMSPID}anchors.tx --tls --cafile "$ORDERER_CA" >&log.txt
+  peer channel update -o blocc-container"${CHANNEL_LEADER_NUM}"-orderer:7050 --ordererTLSHostnameOverride blocc-container"${CHANNEL_LEADER_NUM}" -c $CHANNEL_NAME -f ${CORE_PEER_LOCALMSPID}anchors.tx --tls --cafile "$ORDERER_CA" >&log.txt
   res=$?
   cat log.txt
   verifyResult $res "Anchor peer update failed"
@@ -40,7 +40,8 @@ updateAnchorPeer() {
 }
 
 ORG=$1
-CHANNEL_NAME=$2
+CHANNEL_LEADER_NUM=$2
+CHANNEL_NAME=channel${CHANNEL_LEADER_NUM}
 
 setGlobalsCLI $ORG
 

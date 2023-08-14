@@ -15,12 +15,14 @@ fetchChannelConfig() {
   ORG=$1
   CHANNEL=$2
   OUTPUT=$3
+  CHANNEL_LEADER_NUM=$4
 
-  setGlobals $ORG
+  setGlobals "$ORG"
+  setOrdererGlobals "$CHANNEL_LEADER_NUM"
 
   infoln "Fetching the most recent configuration block for the channel"
   set -x
-  peer channel fetch config config_block.pb -o blocc-container5-orderer:7050 --ordererTLSHostnameOverride blocc-container5 -c $CHANNEL --tls --cafile "$ORDERER_CA"
+  peer channel fetch config config_block.pb -o blocc-container"${CHANNEL_LEADER_NUM}"-orderer:7050 --ordererTLSHostnameOverride blocc-container"${CHANNEL_LEADER_NUM}" -c $CHANNEL --tls --cafile "$ORDERER_CA"
   { set +x; } 2>/dev/null
 
   infoln "Decoding config block to JSON and isolating config to ${OUTPUT}"

@@ -14,7 +14,7 @@ function printHelp() {
     println "  network.sh \033[0;32mup\033[0m [Flags]"
     println
     println "    Flags:"
-    println "    -c <channel name> - Name of channel to create (defaults to \"mychannel\")"
+    println "    -c <channel number> - The number of channel to create, eg. 3 will create channel3 whose leader is Container 3 (defaults to \"channel5\")"
     println "    -r <max retry> - CLI times out after certain number of attempts (defaults to 5)"
     println "    -d <delay> - CLI delays for a certain number of seconds (defaults to 3)"
     println "    -verbose - Verbose mode"
@@ -26,13 +26,13 @@ function printHelp() {
     println "   \033[0;32mup createChannel\033[0m -c -r -d -verbose"
     println
     println " Examples:"
-    println "   network.sh up createChannel -c mychannel"
+    println "   network.sh up createChannel -c 3"
   elif [ "$USAGE" == "createChannel" ]; then
     println "Usage: "
     println "  network.sh \033[0;32mcreateChannel\033[0m [Flags]"
     println
     println "    Flags:"
-    println "    -c <channel name> - Name of channel to create (defaults to \"mychannel\")"
+    println "    -c <channel number> - The number of channel to create, eg. 3 will create channel3 whose leader is Container 3 (defaults to \"channel5\")"
     println "    -r <max retry> - CLI times out after certain number of attempts (defaults to 5)"
     println "    -d <delay> - CLI delays for a certain number of seconds (defaults to 3)"
     println "    -verbose - Verbose mode"
@@ -43,7 +43,7 @@ function printHelp() {
     println "   \033[0;32mcreateChannel\033[0m -c -r -d -verbose"
     println
     println " Examples:"
-    println "   network.sh createChannel -c channelName"
+    println "   network.sh createChannel -c 3"
   elif [ "$USAGE" == "deployCC" ]; then
     println "Usage: "
     println "  network.sh \033[0;32mdeployCC\033[0m [Flags]"
@@ -79,13 +79,13 @@ function printHelp() {
     println
     println "    Flags:"
     println "    Used with \033[0;32mnetwork.sh up\033[0m, \033[0;32mnetwork.sh createChannel\033[0m:"
-    println "    -c <channel name> - Name of channel to create (defaults to \"mychannel\")"
+    println "    -c <channel number> - The number of channel to create, eg. 3 will create channel3 whose leader is Container 3 (defaults to \"channel5\")"
     println "    -r <max retry> - CLI times out after certain number of attempts (defaults to 5)"
     println "    -d <delay> - CLI delays for a certain number of seconds (defaults to 3)"
     println "    -verbose - Verbose mode"
     println
     println "    Used with \033[0;32mnetwork.sh deployCC\033[0m"
-    println "    -c <channel name> - Name of channel to deploy chaincode to"
+    println "    -c <channel number> - The number of channel to create, eg. 3 will create channel3 whose leader is Container 3 (defaults to \"channel5\")"
     println "    -ccn <name> - Chaincode name."
     println "    -ccl <language> - Programming language of the chaincode to deploy: go, java, javascript, typescript"
     println "    -ccv <version>  - Chaincode version. 1.0 (default), v2, version3.x, etc"
@@ -104,8 +104,8 @@ function printHelp() {
     println "   \033[0;32mdeployCC\033[0m -ccn -ccl -ccv -ccs -ccp -cci -r -d -verbose"
     println
     println " Examples:"
-    println "   network.sh up createChannel -c mychannel"
-    println "   network.sh createChannel -c channelName"
+    println "   network.sh up createChannel -c 3"
+    println "   network.sh createChannel -c 3"
     println "   network.sh deployCC -ccn basic -ccp ../asset-transfer-basic/chaincode-javascript/ -ccl javascript"
     println "   network.sh deployCC -ccn mychaincode -ccp ./user/mychaincode -ccv 1 -ccl javascript"
   fi

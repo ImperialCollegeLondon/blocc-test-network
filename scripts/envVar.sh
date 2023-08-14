@@ -11,10 +11,6 @@
 . scripts/utils.sh
 
 export CORE_PEER_TLS_ENABLED=true
-# TODO: make orderer variable
-export ORDERER_CA=${PWD}/organizations/ordererOrganizations/container5.blocc.doc.ic.ac.uk/tlsca/tlsca.container5.blocc.doc.ic.ac.uk-cert.pem
-export ORDERER_ADMIN_TLS_SIGN_CERT=${PWD}/organizations/ordererOrganizations/container5.blocc.doc.ic.ac.uk/orderers/orderer.container5.blocc.doc.ic.ac.uk/tls/server.crt
-export ORDERER_ADMIN_TLS_PRIVATE_KEY=${PWD}/organizations/ordererOrganizations/container5.blocc.doc.ic.ac.uk/orderers/orderer.container5.blocc.doc.ic.ac.uk/tls/server.key
 
 # Set environment variables for the peer org
 setGlobals() {
@@ -35,6 +31,14 @@ setGlobals() {
   if [ "$VERBOSE" == "true" ]; then
     env | grep CORE
   fi
+}
+
+setOrdererGlobals() {
+  CHANNEL_LEADER_NUM=$1
+  export ORDERER_CA=${PWD}/organizations/ordererOrganizations/container${CHANNEL_LEADER_NUM}.blocc.doc.ic.ac.uk/tlsca/tlsca.container${CHANNEL_LEADER_NUM}.blocc.doc.ic.ac.uk-cert.pem
+  export ORDERER_ADMIN_TLS_SIGN_CERT=${PWD}/organizations/ordererOrganizations/container${CHANNEL_LEADER_NUM}.blocc.doc.ic.ac.uk/orderers/orderer.container${CHANNEL_LEADER_NUM}.blocc.doc.ic.ac.uk/tls/server.crt
+  export ORDERER_ADMIN_TLS_PRIVATE_KEY=${PWD}/organizations/ordererOrganizations/container${CHANNEL_LEADER_NUM}.blocc.doc.ic.ac.uk/orderers/orderer.container${CHANNEL_LEADER_NUM}.blocc.doc.ic.ac.uk/tls/server.key
+
 }
 
 # Set environment variables for use in the CLI container

@@ -4,7 +4,8 @@
 . scripts/envVar.sh
 . scripts/utils.sh
 
-CHANNEL_NAME="$1"
+CHANNEL_NAME=channel$1
+CHANNEL_LEADER_NUM=$1
 DELAY="$2"
 MAX_RETRY="$3"
 VERBOSE="$4"
@@ -42,8 +43,7 @@ createChannel() {
 	while [ $rc -ne 0 ] && [ "$COUNTER" -lt "$MAX_RETRY" ]; do
 		sleep "$DELAY"
 		set -x
-		# TODO: make orderer variable
-		osnadmin channel join --channelID "$CHANNEL_NAME" --config-block ./channel-artifacts/"${CHANNEL_NAME}".block -o localhost:5053 --ca-file "$ORDERER_CA" --client-cert "$ORDERER_ADMIN_TLS_SIGN_CERT" --client-key "$ORDERER_ADMIN_TLS_PRIVATE_KEY" >&log.txt
+		osnadmin channel join --channelID "$CHANNEL_NAME" --config-block ./channel-artifacts/"${CHANNEL_NAME}".block -o localhost:"${CHANNEL_LEADER_NUM}"053 --ca-file "$ORDERER_CA" --client-cert "$ORDERER_ADMIN_TLS_SIGN_CERT" --client-key "$ORDERER_ADMIN_TLS_PRIVATE_KEY" >&log.txt
 		res=$?
 		{ set +x; } 2>/dev/null
 		rc=$res
@@ -75,17 +75,20 @@ joinChannel() {
 
 setAnchorPeer() {
   ORG=$1
-  ${CONTAINER_CLI} exec cli ./scripts/setAnchorPeer.sh "$ORG" "$CHANNEL_NAME" 
+  ${CONTAINER_CLI} exec cli ./scripts/setAnchorPeer.sh "$ORG" "$CHANNEL_LEADER_NUM" 
 }
 
 FABRIC_CFG_PATH=${PWD}/configtx
 
 ## Create channel genesis block
 infoln "Generating channel genesis block '${CHANNEL_NAME}.block'"
-createChannelGenesisBlock Channel5Genesis
+createChannelGenesisBlock Channel$1Genesis
 
 FABRIC_CFG_PATH=${PWD}/../blocc-pi-setup/fabric/config
 BLOCKFILE="./channel-artifacts/${CHANNEL_NAME}.block"
+
+## Set orderer TLS globals
+setOrdererGlobals "$CHANNEL_LEADER_NUM"
 
 ## Create channel
 infoln "Creating channel ${CHANNEL_NAME}"

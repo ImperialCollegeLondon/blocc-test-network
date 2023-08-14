@@ -387,7 +387,7 @@ if [ "$MODE" == "up" ]; then
   infoln "Starting nodes with CLI timeout of '${MAX_RETRY}' tries and CLI delay of '${CLI_DELAY}' seconds and using database '${DATABASE}' ${CRYPTO_MODE}"
   networkUp
 elif [ "$MODE" == "createChannel" ]; then
-  infoln "Creating channel '${CHANNEL_NAME}'."
+  infoln "Creating channel 'channel${CHANNEL_NAME}'."
   infoln "If network is not up, starting nodes with CLI timeout of '${MAX_RETRY}' tries and CLI delay of '${CLI_DELAY}' seconds and using database '${DATABASE} ${CRYPTO_MODE}"
   createChannel
 elif [ "$MODE" == "down" ]; then
