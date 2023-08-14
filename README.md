@@ -27,13 +27,13 @@ You should have...
 You can bring up the BLOCC network and create a channel called `channel5` via
 
 ```shell
-./network.sh up createChannel -c channel5
+./network.sh up createChannel -c 5
 ```
 
 You can deploy a chaincode code `sensor_chaincode` via
 
 ```shell
-./network.sh deployCC -ccn sensor_chaincode -ccp ~/blocc/blocc-temp-humidity-chaincode -ccl java -ccep "AND('Container5MSP.peer')"
+./network.sh deployCC -c 5 -ccn sensor_chaincode -ccp ~/blocc/blocc-temp-humidity-chaincode -ccl java -ccep "AND('Container5MSP.peer')"
 ```
 
 > Note that: the signature policy is required as per the BLOCC protocol

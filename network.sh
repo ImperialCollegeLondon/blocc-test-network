@@ -215,12 +215,12 @@ function createChannel() {
 
   # now run the script that creates a channel. This script uses configtxgen once
   # to create the channel creation transaction and the anchor peer updates.
-  scripts/createChannel.sh "$CHANNEL_NAME" "$CLI_DELAY" "$MAX_RETRY" $VERBOSE
+  scripts/createChannel.sh "$CHANNEL_LEADER_NUM" "$CLI_DELAY" "$MAX_RETRY" $VERBOSE
 }
 
 ## Call the script to deploy a chaincode to the channel
 function deployCC() {
-  if ! scripts/deployCC.sh "$CHANNEL_NAME" "$CC_NAME" "$CC_SRC_PATH" "$CC_SRC_LANGUAGE" "$CC_VERSION" "$CC_SEQUENCE" "$CC_INIT_FCN" "$CC_END_POLICY" "$CC_COLL_CONFIG" "$CLI_DELAY" "$MAX_RETRY" $VERBOSE; then
+  if ! scripts/deployCC.sh "$CHANNEL_LEADER_NUM" "$CC_NAME" "$CC_SRC_PATH" "$CC_SRC_LANGUAGE" "$CC_VERSION" "$CC_SEQUENCE" "$CC_INIT_FCN" "$CC_END_POLICY" "$CC_COLL_CONFIG" "$CLI_DELAY" "$MAX_RETRY" $VERBOSE; then
     fatalln "Deploying chaincode failed"
   fi
 }
@@ -260,7 +260,7 @@ MAX_RETRY=5
 # default for delay between commands
 CLI_DELAY=3
 # channel name defaults to "channel5"
-CHANNEL_NAME="channel5"
+CHANNEL_LEADER_NUM="5"
 # chaincode name defaults to "NA"
 CC_NAME="NA"
 # chaincode path defaults to "NA"
@@ -316,7 +316,7 @@ while [[ $# -ge 1 ]]; do
     exit 0
     ;;
   -c)
-    CHANNEL_NAME="$2"
+    CHANNEL_LEADER_NUM="$2"
     shift
     ;;
   -r)
@@ -387,7 +387,7 @@ if [ "$MODE" == "up" ]; then
   infoln "Starting nodes with CLI timeout of '${MAX_RETRY}' tries and CLI delay of '${CLI_DELAY}' seconds and using database '${DATABASE}' ${CRYPTO_MODE}"
   networkUp
 elif [ "$MODE" == "createChannel" ]; then
-  infoln "Creating channel 'channel${CHANNEL_NAME}'."
+  infoln "Creating channel 'channel${CHANNEL_LEADER_NUM}'."
   infoln "If network is not up, starting nodes with CLI timeout of '${MAX_RETRY}' tries and CLI delay of '${CLI_DELAY}' seconds and using database '${DATABASE} ${CRYPTO_MODE}"
   createChannel
 elif [ "$MODE" == "down" ]; then
@@ -398,10 +398,10 @@ elif [ "$MODE" == "restart" ]; then
   networkDown
   networkUp
 elif [ "$MODE" == "deployCC" ]; then
-  infoln "deploying chaincode on channel '${CHANNEL_NAME}'"
+  infoln "deploying chaincode on channel '${CHANNEL_LEADER_NUM}'"
   deployCC
 elif [ "$MODE" == "deployCCAAS" ]; then
-  infoln "deploying chaincode-as-a-service on channel '${CHANNEL_NAME}'"
+  infoln "deploying chaincode-as-a-service on channel '${CHANNEL_LEADER_NUM}'"
   deployCCAAS
 else
   printHelp

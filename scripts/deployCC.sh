@@ -2,7 +2,8 @@
 
 source scripts/utils.sh
 
-CHANNEL_NAME=${1:-"channel5"}
+CHANNEL_LEADER_NUM=${1}
+CHANNEL_NAME=channel${CHANNEL_LEADER_NUM}
 CC_NAME=${2}
 CC_SRC_PATH=${3}
 CC_SRC_LANGUAGE=${4}
@@ -147,6 +148,9 @@ installChaincode 6
 
 ## query whether the chaincode is installed
 queryInstalled 6
+
+## specify CHANNEL_LEADER_NUM for ccutils.sh
+export CHANNEL_LEADER_NUM=$CHANNEL_LEADER_NUM
 
 ## approve the definition for org1
 approveForMyOrg 5

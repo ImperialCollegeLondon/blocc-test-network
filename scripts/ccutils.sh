@@ -33,10 +33,10 @@ function queryInstalled() {
 # approveForMyOrg VERSION PEER ORG
 function approveForMyOrg() {
   ORG=$1
-  setGlobals $ORG
+  setGlobals "$ORG"
+  setOrdererGlobals "$CHANNEL_LEADER_NUM"
   set -x
-  # TODO: parametrise orderer according to channel
-  peer lifecycle chaincode approveformyorg -o localhost:5050 --ordererTLSHostnameOverride blocc-container5 --tls --cafile "$ORDERER_CA" --channelID $CHANNEL_NAME --name ${CC_NAME} --version ${CC_VERSION} --package-id ${PACKAGE_ID} --sequence ${CC_SEQUENCE} ${INIT_REQUIRED} ${CC_END_POLICY} ${CC_COLL_CONFIG} >&log.txt
+  peer lifecycle chaincode approveformyorg -o localhost:"${CHANNEL_LEADER_NUM}"050 --ordererTLSHostnameOverride blocc-container${CHANNEL_LEADER_NUM} --tls --cafile "$ORDERER_CA" --channelID $CHANNEL_NAME --name ${CC_NAME} --version ${CC_VERSION} --package-id ${PACKAGE_ID} --sequence ${CC_SEQUENCE} ${INIT_REQUIRED} ${CC_END_POLICY} ${CC_COLL_CONFIG} >&log.txt
   res=$?
   { set +x; } 2>/dev/null
   cat log.txt
@@ -85,8 +85,8 @@ function commitChaincodeDefinition() {
   # peer (if join was successful), let's supply it directly as we know
   # it using the "-o" option
   set -x
-  # TODO: parametrise orderer according to channel
-  peer lifecycle chaincode commit -o localhost:5050 --ordererTLSHostnameOverride blocc-container5 --tls --cafile "$ORDERER_CA" --channelID $CHANNEL_NAME --name ${CC_NAME} "${PEER_CONN_PARMS[@]}" --version ${CC_VERSION} --sequence ${CC_SEQUENCE} ${INIT_REQUIRED} ${CC_END_POLICY} ${CC_COLL_CONFIG} >&log.txt
+  setOrdererGlobals "$CHANNEL_LEADER_NUM"
+  peer lifecycle chaincode commit -o localhost:"${CHANNEL_LEADER_NUM}"050 --ordererTLSHostnameOverride blocc-container"${CHANNEL_LEADER_NUM}" --tls --cafile "$ORDERER_CA" --channelID $CHANNEL_NAME --name ${CC_NAME} "${PEER_CONN_PARMS[@]}" --version ${CC_VERSION} --sequence ${CC_SEQUENCE} ${INIT_REQUIRED} ${CC_END_POLICY} ${CC_COLL_CONFIG} >&log.txt
   res=$?
   { set +x; } 2>/dev/null
   cat log.txt
@@ -123,6 +123,7 @@ function queryCommitted() {
   fi
 }
 
+#FIXME
 function chaincodeInvokeInit() {
   parsePeerConnectionParameters $@
   res=$?
@@ -142,6 +143,7 @@ function chaincodeInvokeInit() {
   successln "Invoke transaction successful on $PEERS on channel '$CHANNEL_NAME'"
 }
 
+#FIXME
 function chaincodeQuery() {
   ORG=$1
   setGlobals $ORG
