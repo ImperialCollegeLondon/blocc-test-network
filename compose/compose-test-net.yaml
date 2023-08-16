@@ -19,6 +19,7 @@ services:
   orderer5:
     container_name: blocc-container5-orderer
     image: ghcr.io/imperialcollegelondon/fabric-orderer:bloccprotocol-release
+    # image: hyperledger/fabric-orderer:latest
     labels:
       service: blocc-fabric
     environment:
@@ -55,6 +56,7 @@ services:
   orderer6:
     container_name: blocc-container6-orderer
     image: ghcr.io/imperialcollegelondon/fabric-orderer:bloccprotocol-release
+    # image: hyperledger/fabric-orderer:latest
     labels:
       service: blocc-fabric
     environment:
@@ -91,6 +93,7 @@ services:
   peer5:
     container_name: blocc-container5
     image: ghcr.io/imperialcollegelondon/fabric-peer:bloccprotocol-release
+    # image: hyperledger/fabric-peer:latest
     labels:
       service: blocc-fabric
     environment:
@@ -129,6 +132,7 @@ services:
   peer6:
     container_name: blocc-container6
     image: ghcr.io/imperialcollegelondon/fabric-peer:bloccprotocol-release
+    # image: hyperledger/fabric-peer:latest
     labels:
       service: blocc-fabric
     environment:
@@ -167,6 +171,7 @@ services:
   cli:
     container_name: cli
     image: ghcr.io/imperialcollegelondon/fabric-tools:bloccprotocol-release
+    # image: hyperledger/fabric-tools:latest
     labels:
       service: blocc-fabric
     tty: true
