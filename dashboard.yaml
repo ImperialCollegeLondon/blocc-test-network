@@ -1,0 +1,46 @@
+version: '2.1'
+
+networks:
+  test:
+    name: blocc_test
+    external: true
+
+services:
+  backend:
+    container_name: blocc-dashboard-backend
+    image: ghcr.io/imperialcollegelondon/blocc-dashboard-backend:master
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db.dashbaord.blocc.doc.ic.ac.uk:5432/blocc-dashboard-backend
+      - SPRING_DATASOURCE_USERNAME=blocc-dashboard-backend
+      - SPRING_DATASOURCE_PASSWORD=blocc-dashboard-backend-db
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_JPA_SHOW_SQL=false
+      - SERVER_PORT=8080
+      - FABRIC_ORG_PATH=/etc/hyperledger/crypto
+      - FABRIC_CONTAINER_NUM=5
+      - FABRIC_ENV=prod
+      - FABRIC_AVAILABLE_CONTAINERS=5,6
+    ports:
+      - 9080:8080
+    volumes:
+      - ./organizations:/etc/hyperledger/crypto
+    networks:
+      - test
+
+  db:
+    image: postgres:latest
+    container_name: blocc-dashboard-backend-db
+    hostname: db.dashbaord.blocc.doc.ic.ac.uk
+    environment:
+      - POSTGRES_DB=blocc-dashboard-backend
+      - POSTGRES_USER=blocc-dashboard-backend
+      - POSTGRES_PASSWORD=blocc-dashboard-backend-db
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U blocc-dashboard-backend"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - test
