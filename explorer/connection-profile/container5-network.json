@@ -19,7 +19,17 @@
 		}
 	},
 	"channels": {
-		"channel5": {
+		"channel1": {
+			"peers": {
+				"peer0.container5.blocc.doc.ic.ac.uk": {}
+			}
+		},
+		"channel2": {
+			"peers": {
+				"peer0.container5.blocc.doc.ic.ac.uk": {}
+			}
+		},
+		"channel12": {
 			"peers": {
 				"peer0.container5.blocc.doc.ic.ac.uk": {}
 			}

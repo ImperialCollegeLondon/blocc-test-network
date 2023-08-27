@@ -1,4 +1,76 @@
 Organizations:
+- &ContainerOrdererOrg1
+
+  Name: ContainerOrderer1MSP
+  ID: ContainerOrderer1MSP
+  MSPDir: ../organizations/ordererOrganizations/container1.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('ContainerOrderer1MSP.member')"
+    Writers:
+      Type: Signature
+      Rule: "OR('ContainerOrderer1MSP.member')"
+    Admins:
+      Type: Signature
+      Rule: "OR('ContainerOrderer1MSP.admin')"
+  OrdererEndpoints:
+  - blocc-container1-orderer:7050
+
+- &ContainerOrdererOrg2
+
+  Name: ContainerOrderer2MSP
+  ID: ContainerOrderer2MSP
+  MSPDir: ../organizations/ordererOrganizations/container2.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('ContainerOrderer2MSP.member')"
+    Writers:
+      Type: Signature
+      Rule: "OR('ContainerOrderer2MSP.member')"
+    Admins:
+      Type: Signature
+      Rule: "OR('ContainerOrderer2MSP.admin')"
+  OrdererEndpoints:
+  - blocc-container2-orderer:7050
+
+- &ContainerOrdererOrg3
+
+  Name: ContainerOrderer3MSP
+  ID: ContainerOrderer3MSP
+  MSPDir: ../organizations/ordererOrganizations/container3.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('ContainerOrderer3MSP.member')"
+    Writers:
+      Type: Signature
+      Rule: "OR('ContainerOrderer3MSP.member')"
+    Admins:
+      Type: Signature
+      Rule: "OR('ContainerOrderer3MSP.admin')"
+  OrdererEndpoints:
+  - blocc-container3-orderer:7050
+
+- &ContainerOrdererOrg4
+
+  Name: ContainerOrderer4MSP
+  ID: ContainerOrderer4MSP
+  MSPDir: ../organizations/ordererOrganizations/container4.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('ContainerOrderer4MSP.member')"
+    Writers:
+      Type: Signature
+      Rule: "OR('ContainerOrderer4MSP.member')"
+    Admins:
+      Type: Signature
+      Rule: "OR('ContainerOrderer4MSP.admin')"
+  OrdererEndpoints:
+  - blocc-container4-orderer:7050
+
 - &ContainerOrdererOrg5
 
   Name: ContainerOrderer5MSP
@@ -34,6 +106,190 @@ Organizations:
       Rule: "OR('ContainerOrderer6MSP.admin')"
   OrdererEndpoints:
   - blocc-container6-orderer:7050
+
+- &ContainerOrdererOrg7
+
+  Name: ContainerOrderer7MSP
+  ID: ContainerOrderer7MSP
+  MSPDir: ../organizations/ordererOrganizations/container7.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('ContainerOrderer7MSP.member')"
+    Writers:
+      Type: Signature
+      Rule: "OR('ContainerOrderer7MSP.member')"
+    Admins:
+      Type: Signature
+      Rule: "OR('ContainerOrderer7MSP.admin')"
+  OrdererEndpoints:
+  - blocc-container7-orderer:7050
+
+- &ContainerOrdererOrg8
+
+  Name: ContainerOrderer8MSP
+  ID: ContainerOrderer8MSP
+  MSPDir: ../organizations/ordererOrganizations/container8.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('ContainerOrderer8MSP.member')"
+    Writers:
+      Type: Signature
+      Rule: "OR('ContainerOrderer8MSP.member')"
+    Admins:
+      Type: Signature
+      Rule: "OR('ContainerOrderer8MSP.admin')"
+  OrdererEndpoints:
+  - blocc-container8-orderer:7050
+
+- &ContainerOrdererOrg9
+
+  Name: ContainerOrderer9MSP
+  ID: ContainerOrderer9MSP
+  MSPDir: ../organizations/ordererOrganizations/container9.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('ContainerOrderer9MSP.member')"
+    Writers:
+      Type: Signature
+      Rule: "OR('ContainerOrderer9MSP.member')"
+    Admins:
+      Type: Signature
+      Rule: "OR('ContainerOrderer9MSP.admin')"
+  OrdererEndpoints:
+  - blocc-container9-orderer:7050
+
+- &ContainerOrdererOrg10
+
+  Name: ContainerOrderer10MSP
+  ID: ContainerOrderer10MSP
+  MSPDir: ../organizations/ordererOrganizations/container10.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('ContainerOrderer10MSP.member')"
+    Writers:
+      Type: Signature
+      Rule: "OR('ContainerOrderer10MSP.member')"
+    Admins:
+      Type: Signature
+      Rule: "OR('ContainerOrderer10MSP.admin')"
+  OrdererEndpoints:
+  - blocc-container10-orderer:7050
+
+- &ContainerOrdererOrg11
+
+  Name: ContainerOrderer11MSP
+  ID: ContainerOrderer11MSP
+  MSPDir: ../organizations/ordererOrganizations/container11.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('ContainerOrderer11MSP.member')"
+    Writers:
+      Type: Signature
+      Rule: "OR('ContainerOrderer11MSP.member')"
+    Admins:
+      Type: Signature
+      Rule: "OR('ContainerOrderer11MSP.admin')"
+  OrdererEndpoints:
+  - blocc-container11-orderer:7050
+
+- &ContainerOrdererOrg12
+
+  Name: ContainerOrderer12MSP
+  ID: ContainerOrderer12MSP
+  MSPDir: ../organizations/ordererOrganizations/container12.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('ContainerOrderer12MSP.member')"
+    Writers:
+      Type: Signature
+      Rule: "OR('ContainerOrderer12MSP.member')"
+    Admins:
+      Type: Signature
+      Rule: "OR('ContainerOrderer12MSP.admin')"
+  OrdererEndpoints:
+  - blocc-container12-orderer:7050
+
+- &ContainerOrg1
+  Name: Container1MSP
+  ID: Container1MSP
+  MSPDir: ../organizations/peerOrganizations/container1.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('Container1MSP.admin', 'Container1MSP.peer', 'Container1MSP.client')"
+    Writers:
+      Type: Signature
+      Rule: "OR('Container1MSP.admin', 'Container1MSP.client')"
+    Admins:
+      Type: Signature
+      # Adding peer to Admins since each peerOrg is a shipping container
+      Rule: "OR('Container1MSP.admin', 'Container1MSP.peer')"
+    Endorsement:
+      Type: Signature
+      Rule: "OR('Container1MSP.peer')"
+
+- &ContainerOrg2
+  Name: Container2MSP
+  ID: Container2MSP
+  MSPDir: ../organizations/peerOrganizations/container2.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('Container2MSP.admin', 'Container2MSP.peer', 'Container2MSP.client')"
+    Writers:
+      Type: Signature
+      Rule: "OR('Container2MSP.admin', 'Container2MSP.client')"
+    Admins:
+      Type: Signature
+      # Adding peer to Admins since each peerOrg is a shipping container
+      Rule: "OR('Container2MSP.admin', 'Container2MSP.peer')"
+    Endorsement:
+      Type: Signature
+      Rule: "OR('Container2MSP.peer')"
+
+- &ContainerOrg3
+  Name: Container3MSP
+  ID: Container3MSP
+  MSPDir: ../organizations/peerOrganizations/container3.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('Container3MSP.admin', 'Container3MSP.peer', 'Container3MSP.client')"
+    Writers:
+      Type: Signature
+      Rule: "OR('Container3MSP.admin', 'Container3MSP.client')"
+    Admins:
+      Type: Signature
+      # Adding peer to Admins since each peerOrg is a shipping container
+      Rule: "OR('Container3MSP.admin', 'Container3MSP.peer')"
+    Endorsement:
+      Type: Signature
+      Rule: "OR('Container3MSP.peer')"
+
+- &ContainerOrg4
+  Name: Container4MSP
+  ID: Container4MSP
+  MSPDir: ../organizations/peerOrganizations/container4.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('Container4MSP.admin', 'Container4MSP.peer', 'Container4MSP.client')"
+    Writers:
+      Type: Signature
+      Rule: "OR('Container4MSP.admin', 'Container4MSP.client')"
+    Admins:
+      Type: Signature
+      # Adding peer to Admins since each peerOrg is a shipping container
+      Rule: "OR('Container4MSP.admin', 'Container4MSP.peer')"
+    Endorsement:
+      Type: Signature
+      Rule: "OR('Container4MSP.peer')"
 
 - &ContainerOrg5
   Name: Container5MSP
@@ -72,6 +328,120 @@ Organizations:
       Type: Signature
       Rule: "OR('Container6MSP.peer')"
 
+- &ContainerOrg7
+  Name: Container7MSP
+  ID: Container7MSP
+  MSPDir: ../organizations/peerOrganizations/container7.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('Container7MSP.admin', 'Container7MSP.peer', 'Container7MSP.client')"
+    Writers:
+      Type: Signature
+      Rule: "OR('Container7MSP.admin', 'Container7MSP.client')"
+    Admins:
+      Type: Signature
+      # Adding peer to Admins since each peerOrg is a shipping container
+      Rule: "OR('Container7MSP.admin', 'Container7MSP.peer')"
+    Endorsement:
+      Type: Signature
+      Rule: "OR('Container7MSP.peer')"
+
+- &ContainerOrg8
+  Name: Container8MSP
+  ID: Container8MSP
+  MSPDir: ../organizations/peerOrganizations/container8.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('Container8MSP.admin', 'Container8MSP.peer', 'Container8MSP.client')"
+    Writers:
+      Type: Signature
+      Rule: "OR('Container8MSP.admin', 'Container8MSP.client')"
+    Admins:
+      Type: Signature
+      # Adding peer to Admins since each peerOrg is a shipping container
+      Rule: "OR('Container8MSP.admin', 'Container8MSP.peer')"
+    Endorsement:
+      Type: Signature
+      Rule: "OR('Container8MSP.peer')"
+
+- &ContainerOrg9
+  Name: Container9MSP
+  ID: Container9MSP
+  MSPDir: ../organizations/peerOrganizations/container9.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('Container9MSP.admin', 'Container9MSP.peer', 'Container9MSP.client')"
+    Writers:
+      Type: Signature
+      Rule: "OR('Container9MSP.admin', 'Container9MSP.client')"
+    Admins:
+      Type: Signature
+      # Adding peer to Admins since each peerOrg is a shipping container
+      Rule: "OR('Container9MSP.admin', 'Container9MSP.peer')"
+    Endorsement:
+      Type: Signature
+      Rule: "OR('Container9MSP.peer')"
+
+- &ContainerOrg10
+  Name: Container10MSP
+  ID: Container10MSP
+  MSPDir: ../organizations/peerOrganizations/container10.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('Container10MSP.admin', 'Container10MSP.peer', 'Container10MSP.client')"
+    Writers:
+      Type: Signature
+      Rule: "OR('Container10MSP.admin', 'Container10MSP.client')"
+    Admins:
+      Type: Signature
+      # Adding peer to Admins since each peerOrg is a shipping container
+      Rule: "OR('Container10MSP.admin', 'Container10MSP.peer')"
+    Endorsement:
+      Type: Signature
+      Rule: "OR('Container10MSP.peer')"
+
+- &ContainerOrg11
+  Name: Container11MSP
+  ID: Container11MSP
+  MSPDir: ../organizations/peerOrganizations/container11.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('Container11MSP.admin', 'Container11MSP.peer', 'Container11MSP.client')"
+    Writers:
+      Type: Signature
+      Rule: "OR('Container11MSP.admin', 'Container11MSP.client')"
+    Admins:
+      Type: Signature
+      # Adding peer to Admins since each peerOrg is a shipping container
+      Rule: "OR('Container11MSP.admin', 'Container11MSP.peer')"
+    Endorsement:
+      Type: Signature
+      Rule: "OR('Container11MSP.peer')"
+
+- &ContainerOrg12
+  Name: Container12MSP
+  ID: Container12MSP
+  MSPDir: ../organizations/peerOrganizations/container12.blocc.doc.ic.ac.uk/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('Container12MSP.admin', 'Container12MSP.peer', 'Container12MSP.client')"
+    Writers:
+      Type: Signature
+      Rule: "OR('Container12MSP.admin', 'Container12MSP.client')"
+    Admins:
+      Type: Signature
+      # Adding peer to Admins since each peerOrg is a shipping container
+      Rule: "OR('Container12MSP.admin', 'Container12MSP.peer')"
+    Endorsement:
+      Type: Signature
+      Rule: "OR('Container12MSP.peer')"
+
 Capabilities:
   Channel: &ChannelCapabilities
     V2_0: true
@@ -85,6 +455,18 @@ Capabilities:
 Application: &ApplicationDefaults
 
   Organizations:
+    - *ContainerOrg1
+    - *ContainerOrg2
+    - *ContainerOrg3
+    - *ContainerOrg4
+    - *ContainerOrg5
+    - *ContainerOrg6
+    - *ContainerOrg7
+    - *ContainerOrg8
+    - *ContainerOrg9
+    - *ContainerOrg10
+    - *ContainerOrg11
+    - *ContainerOrg12
 
   Policies:
     Readers:
@@ -106,13 +488,165 @@ Application: &ApplicationDefaults
   Capabilities:
     <<: *ApplicationCapabilities
 
+Orderer: &ContainerOrderer1
+
+  OrdererType: etcdraft
+
+  EtcdRaft:
+    Consenters:
+    - Host: blocc-container1
+      Port: 7050
+      # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
+      ClientTLSCert: ../organizations/ordererOrganizations/container1.blocc.doc.ic.ac.uk/orderers/orderer.container1.blocc.doc.ic.ac.uk/tls/server.crt
+      ServerTLSCert: ../organizations/ordererOrganizations/container1.blocc.doc.ic.ac.uk/orderers/orderer.container1.blocc.doc.ic.ac.uk/tls/server.crt
+
+  BatchTimeout: 2s
+
+  BatchSize:
+    MaxMessageCount: 1
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    # BlockValidation specifies what signatures must be included in the block
+    # from the orderer for the peer to validate it.
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    SensorySigners:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+
+Orderer: &ContainerOrderer2
+
+  OrdererType: etcdraft
+
+  EtcdRaft:
+    Consenters:
+    - Host: blocc-container2
+      Port: 7050
+      # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
+      ClientTLSCert: ../organizations/ordererOrganizations/container2.blocc.doc.ic.ac.uk/orderers/orderer.container2.blocc.doc.ic.ac.uk/tls/server.crt
+      ServerTLSCert: ../organizations/ordererOrganizations/container2.blocc.doc.ic.ac.uk/orderers/orderer.container2.blocc.doc.ic.ac.uk/tls/server.crt
+
+  BatchTimeout: 2s
+
+  BatchSize:
+    MaxMessageCount: 1
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    # BlockValidation specifies what signatures must be included in the block
+    # from the orderer for the peer to validate it.
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    SensorySigners:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+
+Orderer: &ContainerOrderer3
+
+  OrdererType: etcdraft
+
+  EtcdRaft:
+    Consenters:
+    - Host: blocc-container3
+      Port: 7050
+      # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
+      ClientTLSCert: ../organizations/ordererOrganizations/container3.blocc.doc.ic.ac.uk/orderers/orderer.container3.blocc.doc.ic.ac.uk/tls/server.crt
+      ServerTLSCert: ../organizations/ordererOrganizations/container3.blocc.doc.ic.ac.uk/orderers/orderer.container3.blocc.doc.ic.ac.uk/tls/server.crt
+
+  BatchTimeout: 2s
+
+  BatchSize:
+    MaxMessageCount: 1
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    # BlockValidation specifies what signatures must be included in the block
+    # from the orderer for the peer to validate it.
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    SensorySigners:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+
+Orderer: &ContainerOrderer4
+
+  OrdererType: etcdraft
+
+  EtcdRaft:
+    Consenters:
+    - Host: blocc-container4
+      Port: 7050
+      # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
+      ClientTLSCert: ../organizations/ordererOrganizations/container4.blocc.doc.ic.ac.uk/orderers/orderer.container4.blocc.doc.ic.ac.uk/tls/server.crt
+      ServerTLSCert: ../organizations/ordererOrganizations/container4.blocc.doc.ic.ac.uk/orderers/orderer.container4.blocc.doc.ic.ac.uk/tls/server.crt
+
+  BatchTimeout: 2s
+
+  BatchSize:
+    MaxMessageCount: 1
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    # BlockValidation specifies what signatures must be included in the block
+    # from the orderer for the peer to validate it.
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    SensorySigners:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+
 Orderer: &ContainerOrderer5
 
   OrdererType: etcdraft
 
   EtcdRaft:
     Consenters:
-    - Host: blocc-container5-orderer
+    - Host: blocc-container5
       Port: 7050
       # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
       ClientTLSCert: ../organizations/ordererOrganizations/container5.blocc.doc.ic.ac.uk/orderers/orderer.container5.blocc.doc.ic.ac.uk/tls/server.crt
@@ -150,7 +684,7 @@ Orderer: &ContainerOrderer6
 
   EtcdRaft:
     Consenters:
-    - Host: blocc-container6-orderer
+    - Host: blocc-container6
       Port: 7050
       # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
       ClientTLSCert: ../organizations/ordererOrganizations/container6.blocc.doc.ic.ac.uk/orderers/orderer.container6.blocc.doc.ic.ac.uk/tls/server.crt
@@ -181,6 +715,330 @@ Orderer: &ContainerOrderer6
     SensorySigners:
       Type: ImplicitMeta
       Rule: "ANY Readers"
+
+Orderer: &ContainerOrderer7
+
+  OrdererType: etcdraft
+
+  EtcdRaft:
+    Consenters:
+    - Host: blocc-container7
+      Port: 7050
+      # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
+      ClientTLSCert: ../organizations/ordererOrganizations/container7.blocc.doc.ic.ac.uk/orderers/orderer.container7.blocc.doc.ic.ac.uk/tls/server.crt
+      ServerTLSCert: ../organizations/ordererOrganizations/container7.blocc.doc.ic.ac.uk/orderers/orderer.container7.blocc.doc.ic.ac.uk/tls/server.crt
+
+  BatchTimeout: 2s
+
+  BatchSize:
+    MaxMessageCount: 1
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    # BlockValidation specifies what signatures must be included in the block
+    # from the orderer for the peer to validate it.
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    SensorySigners:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+
+Orderer: &ContainerOrderer8
+
+  OrdererType: etcdraft
+
+  EtcdRaft:
+    Consenters:
+    - Host: blocc-container8
+      Port: 7050
+      # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
+      ClientTLSCert: ../organizations/ordererOrganizations/container8.blocc.doc.ic.ac.uk/orderers/orderer.container8.blocc.doc.ic.ac.uk/tls/server.crt
+      ServerTLSCert: ../organizations/ordererOrganizations/container8.blocc.doc.ic.ac.uk/orderers/orderer.container8.blocc.doc.ic.ac.uk/tls/server.crt
+
+  BatchTimeout: 2s
+
+  BatchSize:
+    MaxMessageCount: 1
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    # BlockValidation specifies what signatures must be included in the block
+    # from the orderer for the peer to validate it.
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    SensorySigners:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+
+Orderer: &ContainerOrderer9
+
+  OrdererType: etcdraft
+
+  EtcdRaft:
+    Consenters:
+    - Host: blocc-container9
+      Port: 7050
+      # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
+      ClientTLSCert: ../organizations/ordererOrganizations/container9.blocc.doc.ic.ac.uk/orderers/orderer.container9.blocc.doc.ic.ac.uk/tls/server.crt
+      ServerTLSCert: ../organizations/ordererOrganizations/container9.blocc.doc.ic.ac.uk/orderers/orderer.container9.blocc.doc.ic.ac.uk/tls/server.crt
+
+  BatchTimeout: 2s
+
+  BatchSize:
+    MaxMessageCount: 1
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    # BlockValidation specifies what signatures must be included in the block
+    # from the orderer for the peer to validate it.
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    SensorySigners:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+
+Orderer: &ContainerOrderer10
+
+  OrdererType: etcdraft
+
+  EtcdRaft:
+    Consenters:
+    - Host: blocc-container10
+      Port: 7050
+      # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
+      ClientTLSCert: ../organizations/ordererOrganizations/container10.blocc.doc.ic.ac.uk/orderers/orderer.container10.blocc.doc.ic.ac.uk/tls/server.crt
+      ServerTLSCert: ../organizations/ordererOrganizations/container10.blocc.doc.ic.ac.uk/orderers/orderer.container10.blocc.doc.ic.ac.uk/tls/server.crt
+
+  BatchTimeout: 2s
+
+  BatchSize:
+    MaxMessageCount: 1
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    # BlockValidation specifies what signatures must be included in the block
+    # from the orderer for the peer to validate it.
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    SensorySigners:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+
+Orderer: &ContainerOrderer11
+
+  OrdererType: etcdraft
+
+  EtcdRaft:
+    Consenters:
+    - Host: blocc-container11
+      Port: 7050
+      # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
+      ClientTLSCert: ../organizations/ordererOrganizations/container11.blocc.doc.ic.ac.uk/orderers/orderer.container11.blocc.doc.ic.ac.uk/tls/server.crt
+      ServerTLSCert: ../organizations/ordererOrganizations/container11.blocc.doc.ic.ac.uk/orderers/orderer.container11.blocc.doc.ic.ac.uk/tls/server.crt
+
+  BatchTimeout: 2s
+
+  BatchSize:
+    MaxMessageCount: 1
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    # BlockValidation specifies what signatures must be included in the block
+    # from the orderer for the peer to validate it.
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    SensorySigners:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+
+Orderer: &ContainerOrderer12
+
+  OrdererType: etcdraft
+
+  EtcdRaft:
+    Consenters:
+    - Host: blocc-container12
+      Port: 7050
+      # NOTE: For simplicity, each orderer in this example is using the same TLS certificate for both the server and client, although this is not required.
+      ClientTLSCert: ../organizations/ordererOrganizations/container12.blocc.doc.ic.ac.uk/orderers/orderer.container12.blocc.doc.ic.ac.uk/tls/server.crt
+      ServerTLSCert: ../organizations/ordererOrganizations/container12.blocc.doc.ic.ac.uk/orderers/orderer.container12.blocc.doc.ic.ac.uk/tls/server.crt
+
+  BatchTimeout: 2s
+
+  BatchSize:
+    MaxMessageCount: 1
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    # BlockValidation specifies what signatures must be included in the block
+    # from the orderer for the peer to validate it.
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    SensorySigners:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+
+Channel: &Channel1
+  Policies:
+    # Who may invoke the 'Deliver' API
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    # Who may invoke the 'Broadcast' API
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    # By default, who may modify elements at this config level
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    ChannelLeader:
+      Type: Signature
+      Rule: "OR('Container1MSP.member')"
+    SensorySigners:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+
+  Capabilities:
+    <<: *ChannelCapabilities
+
+Channel: &Channel2
+  Policies:
+    # Who may invoke the 'Deliver' API
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    # Who may invoke the 'Broadcast' API
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    # By default, who may modify elements at this config level
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    ChannelLeader:
+      Type: Signature
+      Rule: "OR('Container2MSP.member')"
+    SensorySigners:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+
+  Capabilities:
+    <<: *ChannelCapabilities
+
+Channel: &Channel3
+  Policies:
+    # Who may invoke the 'Deliver' API
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    # Who may invoke the 'Broadcast' API
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    # By default, who may modify elements at this config level
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    ChannelLeader:
+      Type: Signature
+      Rule: "OR('Container3MSP.member')"
+    SensorySigners:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+
+  Capabilities:
+    <<: *ChannelCapabilities
+
+Channel: &Channel4
+  Policies:
+    # Who may invoke the 'Deliver' API
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    # Who may invoke the 'Broadcast' API
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    # By default, who may modify elements at this config level
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    ChannelLeader:
+      Type: Signature
+      Rule: "OR('Container4MSP.member')"
+    SensorySigners:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+
+  Capabilities:
+    <<: *ChannelCapabilities
 
 Channel: &Channel5
   Policies:
@@ -230,7 +1088,187 @@ Channel: &Channel6
   Capabilities:
     <<: *ChannelCapabilities
 
+Channel: &Channel7
+  Policies:
+    # Who may invoke the 'Deliver' API
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    # Who may invoke the 'Broadcast' API
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    # By default, who may modify elements at this config level
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    ChannelLeader:
+      Type: Signature
+      Rule: "OR('Container7MSP.member')"
+    SensorySigners:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+
+  Capabilities:
+    <<: *ChannelCapabilities
+
+Channel: &Channel8
+  Policies:
+    # Who may invoke the 'Deliver' API
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    # Who may invoke the 'Broadcast' API
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    # By default, who may modify elements at this config level
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    ChannelLeader:
+      Type: Signature
+      Rule: "OR('Container8MSP.member')"
+    SensorySigners:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+
+  Capabilities:
+    <<: *ChannelCapabilities
+
+Channel: &Channel9
+  Policies:
+    # Who may invoke the 'Deliver' API
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    # Who may invoke the 'Broadcast' API
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    # By default, who may modify elements at this config level
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    ChannelLeader:
+      Type: Signature
+      Rule: "OR('Container9MSP.member')"
+    SensorySigners:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+
+  Capabilities:
+    <<: *ChannelCapabilities
+
+Channel: &Channel10
+  Policies:
+    # Who may invoke the 'Deliver' API
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    # Who may invoke the 'Broadcast' API
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    # By default, who may modify elements at this config level
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    ChannelLeader:
+      Type: Signature
+      Rule: "OR('Container10MSP.member')"
+    SensorySigners:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+
+  Capabilities:
+    <<: *ChannelCapabilities
+
+Channel: &Channel11
+  Policies:
+    # Who may invoke the 'Deliver' API
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    # Who may invoke the 'Broadcast' API
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    # By default, who may modify elements at this config level
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    ChannelLeader:
+      Type: Signature
+      Rule: "OR('Container11MSP.member')"
+    SensorySigners:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+
+  Capabilities:
+    <<: *ChannelCapabilities
+
+Channel: &Channel12
+  Policies:
+    # Who may invoke the 'Deliver' API
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    # Who may invoke the 'Broadcast' API
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    # By default, who may modify elements at this config level
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    ChannelLeader:
+      Type: Signature
+      Rule: "OR('Container12MSP.member')"
+    SensorySigners:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+
+  Capabilities:
+    <<: *ChannelCapabilities
+
 Profiles:
+
+  Channel1Genesis:
+    <<: *Channel1
+    Orderer:
+      <<: *ContainerOrderer1
+      Organizations:
+      - *ContainerOrdererOrg1
+      Capabilities: *OrdererCapabilities
+    Application: *ApplicationDefaults
+
+  Channel2Genesis:
+    <<: *Channel2
+    Orderer:
+      <<: *ContainerOrderer2
+      Organizations:
+      - *ContainerOrdererOrg2
+      Capabilities: *OrdererCapabilities
+    Application: *ApplicationDefaults
+
+  Channel3Genesis:
+    <<: *Channel3
+    Orderer:
+      <<: *ContainerOrderer3
+      Organizations:
+      - *ContainerOrdererOrg3
+      Capabilities: *OrdererCapabilities
+    Application: *ApplicationDefaults
+
+  Channel4Genesis:
+    <<: *Channel4
+    Orderer:
+      <<: *ContainerOrderer4
+      Organizations:
+      - *ContainerOrdererOrg4
+      Capabilities: *OrdererCapabilities
+    Application: *ApplicationDefaults
 
   Channel5Genesis:
     <<: *Channel5
@@ -239,23 +1277,67 @@ Profiles:
       Organizations:
       - *ContainerOrdererOrg5
       Capabilities: *OrdererCapabilities
-    Application:
-      <<: *ApplicationDefaults
-      Organizations:
-      - *ContainerOrg5
-      - *ContainerOrg6
-      Capabilities: *ApplicationCapabilities
+    Application: *ApplicationDefaults
 
   Channel6Genesis:
     <<: *Channel6
     Orderer:
-      <<: *ContainerOrderer6 #???
+      <<: *ContainerOrderer6
       Organizations:
-      - *ContainerOrdererOrg6 
+      - *ContainerOrdererOrg6
       Capabilities: *OrdererCapabilities
-    Application:
-      <<: *ApplicationDefaults
+    Application: *ApplicationDefaults
+
+  Channel7Genesis:
+    <<: *Channel7
+    Orderer:
+      <<: *ContainerOrderer7
       Organizations:
-      - *ContainerOrg5
-      - *ContainerOrg6
-      Capabilities: *ApplicationCapabilities
+      - *ContainerOrdererOrg7
+      Capabilities: *OrdererCapabilities
+    Application: *ApplicationDefaults
+
+  Channel8Genesis:
+    <<: *Channel8
+    Orderer:
+      <<: *ContainerOrderer8
+      Organizations:
+      - *ContainerOrdererOrg8
+      Capabilities: *OrdererCapabilities
+    Application: *ApplicationDefaults
+
+  Channel9Genesis:
+    <<: *Channel9
+    Orderer:
+      <<: *ContainerOrderer9
+      Organizations:
+      - *ContainerOrdererOrg9
+      Capabilities: *OrdererCapabilities
+    Application: *ApplicationDefaults
+
+  Channel10Genesis:
+    <<: *Channel10
+    Orderer:
+      <<: *ContainerOrderer10
+      Organizations:
+      - *ContainerOrdererOrg10
+      Capabilities: *OrdererCapabilities
+    Application: *ApplicationDefaults
+
+  Channel11Genesis:
+    <<: *Channel11
+    Orderer:
+      <<: *ContainerOrderer11
+      Organizations:
+      - *ContainerOrdererOrg11
+      Capabilities: *OrdererCapabilities
+    Application: *ApplicationDefaults
+
+  Channel12Genesis:
+    <<: *Channel12
+    Orderer:
+      <<: *ContainerOrderer12
+      Organizations:
+      - *ContainerOrdererOrg12
+      Capabilities: *OrdererCapabilities
+    Application: *ApplicationDefaults

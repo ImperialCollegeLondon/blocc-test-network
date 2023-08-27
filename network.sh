@@ -199,7 +199,7 @@ function createChannel() {
   len=${#CONTAINERS[@]}
 
   # NOTE: should be changed accordingly when scaling up
-  EXPECTED_CONTAINER_NUM=5
+  EXPECTED_CONTAINER_NUM=25
 
   if [[ $len -ge $EXPECTED_CONTAINER_NUM ]] && [[ ! -d "organizations/peerOrganizations" ]]; then
     echo "Bringing network down to sync certs with containers"

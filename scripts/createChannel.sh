@@ -96,15 +96,16 @@ createChannel
 successln "Channel '$CHANNEL_NAME' created"
 
 ## Join all the peers to the channel
-infoln "Joining container 5 peer to the channel..."
-joinChannel 5
-infoln "Joining container 6 peer to the channel..."
-joinChannel 6
+for i in {1..12}; do
+    infoln "Joining container $i peer to the channel..."
+    joinChannel "$i"
+done
+
 
 ## Set the anchor peers for each org in the channel
-infoln "Setting anchor peer for container 5..."
-setAnchorPeer 5
-infoln "Setting anchor peer for container 5..."
-setAnchorPeer 6
+for i in {1..12}; do
+    infoln "Setting anchor peer for container $i..."
+    setAnchorPeer "$i"
+done
 
 successln "Channel '$CHANNEL_NAME' joined"

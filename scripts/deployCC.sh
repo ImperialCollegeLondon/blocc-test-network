@@ -141,46 +141,57 @@ checkPrereqs
 ## package the chaincode
 packageChaincode
 
-infoln "Installing chaincode on Container5..."
-installChaincode 5
-infoln "Install chaincode on Container6..."
-installChaincode 6
+## install chaincode on all peers
+for i in {1..12}; do
+    infoln "Installing chaincode on Container$i..."
+    installChaincode "$i"
+done
 
 ## query whether the chaincode is installed
-queryInstalled 6
+for i in {1..12}; do
+    queryInstalled "$i"
+done
 
 ## specify CHANNEL_LEADER_NUM for ccutils.sh
 export CHANNEL_LEADER_NUM=$CHANNEL_LEADER_NUM
 
-## approve the definition for org1
-approveForMyOrg 5
-
-## check whether the chaincode definition is ready to be committed
-## expect org1 to have approved and org2 not to
-checkCommitReadiness 5 "\"Container5MSP\": true" "\"Container6MSP\": false"
-checkCommitReadiness 6 "\"Container5MSP\": true" "\"Container6MSP\": false"
-
-## now approve also for org2
-approveForMyOrg 6
+## approve the definition for peer orgs
+for i in {1..12}; do
+    approveForMyOrg "$i"
+done
 
 ## check whether the chaincode definition is ready to be committed
 ## expect them both to have approved
-checkCommitReadiness 5 "\"Container5MSP\": true" "\"Container6MSP\": true"
-checkCommitReadiness 6 "\"Container5MSP\": true" "\"Container6MSP\": true"
+for i in {1..12}; do
+    checkCommitReadiness "$i" \
+    "\"Container1MSP\": true" \
+    "\"Container2MSP\": true" \
+    "\"Container3MSP\": true" \
+    "\"Container4MSP\": true" \
+    "\"Container5MSP\": true" \
+    "\"Container6MSP\": true" \
+    "\"Container7MSP\": true" \
+    "\"Container8MSP\": true" \
+    "\"Container9MSP\": true" \
+    "\"Container10MSP\": true" \
+    "\"Container11MSP\": true" \
+    "\"Container12MSP\": true"
+done
 
 ## now that we know for sure both orgs have approved, commit the definition
-commitChaincodeDefinition 5 6
+commitChaincodeDefinition 1 2 3 4 5 6 7 8 9 10 11 12
 
 ## query on both orgs to see that the definition committed successfully
-queryCommitted 5
-queryCommitted 6
+for i in {1..12}; do
+    queryCommitted "$i"
+done
 
 ## Invoke the chaincode - this does require that the chaincode have the 'initLedger'
 ## method defined
 if [ "$CC_INIT_FCN" = "NA" ]; then
   infoln "Chaincode initialization is not required"
 else
-  chaincodeInvokeInit 5 6
+  chaincodeInvokeInit 1 2 3 4 5 6 7 8 9 10 11 12
 fi
 
 exit 0
